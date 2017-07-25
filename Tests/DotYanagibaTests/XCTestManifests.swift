@@ -1,5 +1,3 @@
-// swift-tools-version:4.0
-
 /*
    Copyright 2017 Ryuichi Laboratories and the Yanagiba project contributors
 
@@ -16,37 +14,13 @@
    limitations under the License.
 */
 
-import PackageDescription
+import XCTest
 
-let package = Package(
-  name: "bocho",
-  products: [
-    .library(
-      name: "Bocho",
-      targets: [
-        "Bocho",
-      ]
-    ),
-  ],
-  targets: [
-    .target(
-      name: "Bocho"
-    ),
-    .testTarget(
-      name: "SerinusTests"
-    ),
-    .testTarget(
-      name: "SwiftExtensionsTests",
-      dependencies: [
-        "Bocho",
-      ]
-    ),
-    .testTarget(
-      name: "DotYanagibaTests",
-      dependencies: [
-        "Bocho",
-      ]
-    ),
-  ],
-  swiftLanguageVersions: [4]
-)
+#if !os(macOS)
+public func allTests() -> [XCTestCaseEntry] {
+  return [
+    testCase(DotYanagibaParserTests.allTests),
+    testCase(DotYanagibaMergeTests.allTests),
+  ]
+}
+#endif

@@ -1,5 +1,3 @@
-// swift-tools-version:4.0
-
 /*
    Copyright 2017 Ryuichi Laboratories and the Yanagiba project contributors
 
@@ -16,37 +14,20 @@
    limitations under the License.
 */
 
-import PackageDescription
-
-let package = Package(
-  name: "bocho",
-  products: [
-    .library(
-      name: "Bocho",
-      targets: [
-        "Bocho",
-      ]
-    ),
-  ],
-  targets: [
-    .target(
-      name: "Bocho"
-    ),
-    .testTarget(
-      name: "SerinusTests"
-    ),
-    .testTarget(
-      name: "SwiftExtensionsTests",
-      dependencies: [
-        "Bocho",
-      ]
-    ),
-    .testTarget(
-      name: "DotYanagibaTests",
-      dependencies: [
-        "Bocho",
-      ]
-    ),
-  ],
-  swiftLanguageVersions: [4]
-)
+public extension DotYanagiba {
+  public static func merge(_ one: DotYanagiba, with other: DotYanagiba) -> DotYanagiba {
+    var modules = one.modules
+    for (moduleName, module) in other.modules {
+      if modules[moduleName] == nil {
+        modules[moduleName] = module
+      } else if let mod = modules[moduleName] {
+        var options = mod.options
+        for (key, option) in module.options {
+          options[key] = option
+        }
+        modules[moduleName] = DotYanagiba.Module(options: options)
+      }
+    }
+    return DotYanagiba(modules: modules)
+  }
+}

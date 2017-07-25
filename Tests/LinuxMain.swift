@@ -18,8 +18,10 @@ import XCTest
 
 import SerinusTests
 import SwiftExtensionsTests
+import DotYanagibaTests
 
 var tests = [XCTestCaseEntry]()
 tests += SerinusTests.allTests()
 tests += SwiftExtensionsTests.allTests()
+tests += DotYanagibaTests.allTests()
 XCTMain(tests)
