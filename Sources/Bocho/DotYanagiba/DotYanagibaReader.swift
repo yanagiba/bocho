@@ -39,10 +39,9 @@ public struct DotYanagibaReader {
       return homeDotYanagiba
     }
 
-    // if var dotYanagibaLint = homeDotYanagiba {
-    //   dotYanagibaLint.merge(with: currentDotYanagiba)
-    //   return dotYanagibaLint
-    // }
+    if let dotYanagibaLint = homeDotYanagiba {
+      return DotYanagiba.merge(dotYanagibaLint, with: currentDotYanagiba)
+    }
 
     return currentDotYanagiba
   }

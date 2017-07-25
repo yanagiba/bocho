@@ -14,13 +14,20 @@
    limitations under the License.
 */
 
-import XCTest
-
-#if !os(macOS)
-public func allTests() -> [XCTestCaseEntry] {
-  return [
-    testCase(DotYanagibaParserTests.allTests),
-    testCase(DotYanagibaMergeTests.allTests),
-  ]
+public extension DotYanagiba {
+  public static func merge(_ one: DotYanagiba, with other: DotYanagiba) -> DotYanagiba {
+    var modules = one.modules
+    for (moduleName, module) in other.modules {
+      if modules[moduleName] == nil {
+        modules[moduleName] = module
+      } else if let mod = modules[moduleName] {
+        var options = mod.options
+        for (key, option) in module.options {
+          options[key] = option
+        }
+        modules[moduleName] = DotYanagiba.Module(options: options)
+      }
+    }
+    return DotYanagiba(modules: modules)
+  }
 }
-#endif

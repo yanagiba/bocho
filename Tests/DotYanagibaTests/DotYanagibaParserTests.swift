@@ -97,7 +97,10 @@ class DotYanagibaParserTests : XCTestCase {
         - b: 2
         - c: 3
     """)
-    guard let abc = result.modules["abc"], let dict = abc.options["dict"], case .dictInt(let dictInt) = dict else {
+    guard let abc = result.modules["abc"],
+      let dict = abc.options["dict"],
+      case .dictInt(let dictInt) = dict
+    else {
       XCTFail("Failed in getting configurations for `abc` module.")
       return
     }
@@ -114,7 +117,10 @@ class DotYanagibaParserTests : XCTestCase {
         - b: b
         - c: c
     """)
-    guard let abc = result.modules["abc"], let dict = abc.options["dict"], case .dictString(let dictString) = dict else {
+    guard let abc = result.modules["abc"],
+      let dict = abc.options["dict"],
+      case .dictString(let dictString) = dict
+    else {
       XCTFail("Failed in getting configurations for `abc` module.")
       return
     }
