@@ -1,0 +1,8 @@
+lint:
+  rule-configurations:
+    - LONG_LINE: 120
+  severity-thresholds:
+    - critical: 0
+    - major: 0
+    - minor: 0
+    - cosmetic: 0
