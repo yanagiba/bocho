@@ -45,10 +45,18 @@ class StringPathTests : XCTestCase {
     XCTAssertEqual("foo/bar".parentPath(currentDirectoryPath: "/abc"), "/abc/foo")
   }
 
+  func testCommonPathPrefix() {
+    XCTAssertEqual(["/a"].commonPathPrefix, "/a")
+    XCTAssertEqual(["/a", "/b"].commonPathPrefix, "/")
+    XCTAssertEqual(["/path/to/foo", "/path/to/bar"].commonPathPrefix, "/path/to/")
+    XCTAssertEqual(["/path/to/foo", "/path/to/bar", "/path/bar"].commonPathPrefix, "/path/")
+  }
+
   static var allTests = [
     ("testTruncatedPath", testTruncatedPath),
     ("testTruncatedPathWithPrefixNoMatch", testTruncatedPathWithPrefixNoMatch),
     ("testAbsolutePath", testAbsolutePath),
     ("testParentPath", testParentPath),
+    ("testCommonPathPrefix", testCommonPathPrefix),
   ]
 }

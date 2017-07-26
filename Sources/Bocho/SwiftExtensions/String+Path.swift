@@ -79,3 +79,31 @@ public extension String {
     return "/" + components.map(String.init).joined(separator: "/")
   }
 }
+
+public extension Collection where Iterator.Element == String {
+  public var commonPathPrefix: String {
+    var shortestPath: String?
+    var length = Int.max
+
+    for path in self {
+      if path.count < length {
+        length = path.count
+        shortestPath = path
+      }
+    }
+
+    guard var commonPrefix = shortestPath else {
+      return ""
+    }
+
+    var endIndex = commonPrefix.endIndex
+    for path in self {
+      while !commonPrefix.isEmpty && !path.hasPrefix(commonPrefix) {
+        endIndex = commonPrefix.index(before: endIndex)
+        commonPrefix = commonPrefix.substring(to: endIndex)
+      }
+    }
+
+    return commonPrefix
+  }
+}
