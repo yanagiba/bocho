@@ -20,7 +20,7 @@ import XCTest
 public func allTests() -> [XCTestCaseEntry] {
   return [
     testCase(StringIdentationTests.allTests),
-    testCase(StringPWDTests.allTests),
+    testCase(StringPathTests.allTests),
     testCase(StringTTYColorTests.allTests),
   ]
 }

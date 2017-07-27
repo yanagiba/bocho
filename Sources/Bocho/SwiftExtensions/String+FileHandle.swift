@@ -17,16 +17,20 @@
 import Foundation
 
 public extension String {
-  public var adjustedForPWD: String {
-    return tail(byRemoving: FileManager.default.currentDirectoryPath)
-  }
-
-  func tail(byRemoving prfx: String) -> String {
-    // Note: one extra character is truncated after the prefix
-    guard hasPrefix(prfx) else {
-      return self
+  public var fileHandle: FileHandle {
+    let outputPath = absolutePath
+    let fileManager = FileManager.default
+    if fileManager.fileExists(atPath: outputPath) {
+      _ = try? "".write(toFile: outputPath, atomically: true, encoding: .utf8)
+    } else {
+      if !fileManager.createFile(atPath: outputPath, contents: nil) {
+        _ = try? fileManager.createDirectory(atPath: parentPath, withIntermediateDirectories: true)
+        _ = fileManager.createFile(atPath: outputPath, contents: nil)
+      }
     }
-
-    return substring(from: index(startIndex, offsetBy: prfx.count+1))
+    if let fileHandle = FileHandle(forWritingAtPath: outputPath) {
+      return fileHandle
+    }
+    return .standardOutput
   }
 }

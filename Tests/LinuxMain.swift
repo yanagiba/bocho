@@ -19,9 +19,11 @@ import XCTest
 import SerinusTests
 import SwiftExtensionsTests
 import DotYanagibaTests
+import CommandLineTests
 
 var tests = [XCTestCaseEntry]()
 tests += SerinusTests.allTests()
 tests += SwiftExtensionsTests.allTests()
 tests += DotYanagibaTests.allTests()
+tests += CommandLineTests.allTests()
 XCTMain(tests)

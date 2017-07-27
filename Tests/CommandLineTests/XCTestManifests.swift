@@ -16,23 +16,10 @@
 
 import XCTest
 
-@testable import Bocho
-
-class StringPWDTests : XCTestCase {
-  func testHasPrefix() {
-    XCTAssertEqual("/path".tail(byRemoving: ""), "path")
-    XCTAssertEqual("a/path".tail(byRemoving: "a"), "path")
-    XCTAssertEqual("ab/path".tail(byRemoving: "ab"), "path")
-    XCTAssertEqual("abc/path".tail(byRemoving: "abc"), "path")
-  }
-
-  func testPrefixNotMatch() {
-    XCTAssertEqual("abc".tail(byRemoving: "b"), "abc")
-    XCTAssertEqual("abc".tail(byRemoving: "abd"), "abc")
-  }
-
-  static var allTests = [
-    ("testHasPrefix", testHasPrefix),
-    ("testPrefixNotMatch", testPrefixNotMatch),
+#if !os(macOS)
+public func allTests() -> [XCTestCaseEntry] {
+  return [
+    testCase(CLIOptionTests.allTests),
   ]
 }
+#endif

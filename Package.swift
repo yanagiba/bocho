@@ -47,6 +47,12 @@ let package = Package(
         "Bocho",
       ]
     ),
+    .testTarget(
+      name: "CommandLineTests",
+      dependencies: [
+        "Bocho",
+      ]
+    ),
   ],
   swiftLanguageVersions: [4]
 )
