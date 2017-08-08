@@ -29,7 +29,7 @@ public extension String {
       return self
     }
 
-    return substring(from: index(startIndex, offsetBy: currentDirectory.count+1))
+    return String(self[index(startIndex, offsetBy: currentDirectory.count+1)...])
   }
 
   public var absolutePath: String {
@@ -64,7 +64,7 @@ public extension String {
     }
 
     let absolutePath = pathHead.joined(separator: "/") + "/" + pathTail.joined(separator: "/")
-    return absolutePath.substring(from: absolutePath.index(after: absolutePath.startIndex))
+    return String(absolutePath[absolutePath.index(after: absolutePath.startIndex)...])
   }
 
   public var parentPath: String {
@@ -100,7 +100,7 @@ public extension Collection where Iterator.Element == String {
     for path in self {
       while !commonPrefix.isEmpty && !path.hasPrefix(commonPrefix) {
         endIndex = commonPrefix.index(before: endIndex)
-        commonPrefix = commonPrefix.substring(to: endIndex)
+        commonPrefix = String(commonPrefix[..<endIndex])
       }
     }
 
