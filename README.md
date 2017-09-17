@@ -18,7 +18,7 @@ libraries, and utilities, written in Swift and for Swift.
 
 ## Requirements
 
-- [Swift 4.0-DEVELOPMENT-SNAPSHOT-2017-07-06-a](https://swift.org/download/)
+- [Swift 4.0-DEVELOPMENT-SNAPSHOT-2017-09-16-a](https://swift.org/download/)
 
 ## Usage
 
@@ -79,7 +79,7 @@ make test
 
 ## Contact
 
-Ryuichi Saito
+Ryuichi Sai
 
 - http://github.com/ryuichis
 - ryuichi@yanagiba.org
