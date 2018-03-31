@@ -125,7 +125,7 @@ struct DotYanagibaParser {
       return .dictString(keyValues)
     }
 
-    let listInts = options.flatMap({ Int($0) })
+    let listInts = options.compactMap { Int($0) }
     if listInts.count == options.count {
       return .listInt(listInts)
     }
