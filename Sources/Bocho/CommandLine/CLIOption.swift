@@ -47,7 +47,7 @@ public class CLIOption {
     }
 
     return optionString.components(separatedBy: ",")
-      .flatMap { opt -> (String, String)? in
+      .compactMap { opt -> (String, String)? in
         let keyValuePair = opt.components(separatedBy: "=")
         guard keyValuePair.count == 2 else {
           return nil
