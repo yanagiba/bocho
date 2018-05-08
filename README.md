@@ -2,7 +2,7 @@
 
 [![Travis CI Status](https://api.travis-ci.org/yanagiba/bocho.svg?branch=master)](https://travis-ci.org/yanagiba/bocho)
 [![codecov](https://codecov.io/gh/yanagiba/bocho/branch/master/graph/badge.svg)](https://codecov.io/gh/yanagiba/bocho)
-![Swift 4.1](https://img.shields.io/badge/swift-4.1-brightgreen.svg)
+![Swift 4.1.1](https://img.shields.io/badge/swift-4.1.1-brightgreen.svg)
 ![Swift Package Manager](https://img.shields.io/badge/SPM-ready-orange.svg)
 ![Platforms](https://img.shields.io/badge/platform-%20Linux%20|%20macOS%20-red.svg)
 ![License](https://img.shields.io/github/license/yanagiba/bocho.svg)
@@ -18,7 +18,7 @@ libraries, and utilities, written in Swift and for Swift.
 
 ## Requirements
 
-- [Swift 4.1](https://swift.org/download/)
+- [Swift 4.1.1](https://swift.org/download/)
 
 ## Usage
 
