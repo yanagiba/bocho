@@ -27,19 +27,19 @@ libraries, and utilities, written in Swift and for Swift.
 Add the bocho dependency to `Package.swift`:
 
 ```swift
-// swift-tools-version:4.0
+// swift-tools-version:4.2
 
 import PackageDescription
 
 let package = Package(
   name: "MyPackage",
   dependencies: [
-    .package(url: "https://github.com/yanagiba/bocho.git", from: "0.1.2")
+    .package(url: "https://github.com/yanagiba/bocho.git", from: "0.18.10")
   ],
   targets: [
     .target(name: "MyTarget", dependencies: ["Bocho"]),
   ],
-  swiftLanguageVersions: [4]
+  swiftLanguageVersions: [.v4_2]
 )
 ```
 
