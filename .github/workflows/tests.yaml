@@ -30,3 +30,7 @@ jobs:
       - run: swift --version
       - run: make test
       - run: ./lint.sh
+      - run: |
+          make xcodegen
+          xcodebuild -project bocho.xcodeproj -scheme bocho-Package clean
+          xcodebuild -project bocho.xcodeproj -scheme bocho-Package -sdk macosx12.0 -destination arch=x86_64 -configuration Debug -enableCodeCoverage YES test

@@ -11,7 +11,7 @@ build:
 	swift build
 
 test: build
-	swift test --enable-test-discovery
+	swift test
 
 xcodegen:
 	swift package generate-xcodeproj --enable-code-coverage
