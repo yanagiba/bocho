@@ -1,6 +1,6 @@
 # Bocho
 
-[![Travis CI Status](https://api.travis-ci.org/yanagiba/bocho.svg?branch=master)](https://travis-ci.org/yanagiba/bocho)
+![GitHub Actions Status](https://github.com/yanagiba/bocho/actions/workflows/tests.yaml/badge.svg)
 [![codecov](https://codecov.io/gh/yanagiba/bocho/branch/master/graph/badge.svg)](https://codecov.io/gh/yanagiba/bocho)
 ![Swift 5.5](https://img.shields.io/badge/swift-5.5-brightgreen.svg)
 ![Swift Package Manager](https://img.shields.io/badge/SPM-ready-orange.svg)
@@ -76,13 +76,6 @@ Compile and run the entire tests by:
 ```bash
 make test
 ```
-
-## Contact
-
-Ryuichi Sai
-
-- http://github.com/ryuichis
-- ryuichi@yanagiba.org
 
 ## License
 
