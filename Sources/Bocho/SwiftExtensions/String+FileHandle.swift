@@ -1,5 +1,5 @@
 /*
-   Copyright 2015-2017 Ryuichi Laboratories and the Yanagiba project contributors
+   Copyright 2015-2022 Ryuichi Intellectual Property and the Yanagiba project contributors
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -17,7 +17,7 @@
 import Foundation
 
 public extension String {
-  public var fileHandle: FileHandle {
+  var fileHandle: FileHandle {
     let outputPath = absolutePath
     let fileManager = FileManager.default
     if fileManager.fileExists(atPath: outputPath) {
