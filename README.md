@@ -2,7 +2,7 @@
 
 [![Travis CI Status](https://api.travis-ci.org/yanagiba/bocho.svg?branch=master)](https://travis-ci.org/yanagiba/bocho)
 [![codecov](https://codecov.io/gh/yanagiba/bocho/branch/master/graph/badge.svg)](https://codecov.io/gh/yanagiba/bocho)
-![Swift 4.2](https://img.shields.io/badge/swift-4.2-brightgreen.svg)
+![Swift 5.5](https://img.shields.io/badge/swift-5.5-brightgreen.svg)
 ![Swift Package Manager](https://img.shields.io/badge/SPM-ready-orange.svg)
 ![Platforms](https://img.shields.io/badge/platform-%20Linux%20|%20macOS%20-red.svg)
 ![License](https://img.shields.io/github/license/yanagiba/bocho.svg)
@@ -10,7 +10,7 @@
 
 Bocho is a set of utility libraries with common code that supports Yanagiba modules.
 
-Bocho is part of [Yanagiba Project](http://yanagiba.org).
+Bocho is part of [Yanagiba Project](https://github.com/yanagiba).
 Yanagiba umbrella project is a toolchain of compiler modules,
 libraries, and utilities, written in Swift and for Swift.
 
@@ -18,7 +18,7 @@ libraries, and utilities, written in Swift and for Swift.
 
 ## Requirements
 
-- [Swift 4.2](https://swift.org/download/)
+- [Swift 5.5](https://swift.org/download/)
 
 ## Usage
 
@@ -27,7 +27,7 @@ libraries, and utilities, written in Swift and for Swift.
 Add the bocho dependency to `Package.swift`:
 
 ```swift
-// swift-tools-version:4.2
+// swift-tools-version:5.5
 
 import PackageDescription
 
@@ -39,7 +39,7 @@ let package = Package(
   targets: [
     .target(name: "MyTarget", dependencies: ["Bocho"]),
   ],
-  swiftLanguageVersions: [.v4_2]
+  swiftLanguageVersions: [.v5]
 )
 ```
 

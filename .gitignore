@@ -1,5 +1,6 @@
 .DS_Store
-.build
-.swift_lint
+.vscode/
+.build/
+.swift_lint/
 bocho.xcodeproj/
 build/
