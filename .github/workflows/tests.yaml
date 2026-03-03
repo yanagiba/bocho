@@ -11,27 +11,38 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-20.04, ubuntu-18.04]
+        os: [ubuntu-24.04, ubuntu-22.04]
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v2
-      - run: |
-          eval "$(curl -sL https://swiftenv.fuller.li/install.sh)"
-          swiftenv install 5.5.2
-          swiftenv global 5.5.2
-      - run: swift --version
-      - run: make test
-      - run: ./lint.sh
+      - uses: actions/checkout@v4
+      - name: Install Swift
+        run: |
+          curl -O "https://download.swift.org/swiftly/linux/swiftly-1.1.1-x86_64.tar.gz"
+          tar -zxf swiftly-1.1.1-x86_64.tar.gz
+          SWIFTLY_HOME_DIR=$HOME/.swiftly SWIFTLY_BIN_DIR=$HOME/.swiftly/bin ./swiftly init --assume-yes --skip-install
+          . "$HOME/.swiftly/env.sh"
+          swiftly install 6.2.4 --use
+      - name: Swift version
+        run: . "$HOME/.swiftly/env.sh" && swift --version
+      - name: Run tests
+        run: . "$HOME/.swiftly/env.sh" && make test
+      - name: Lint
+        run: ./lint.sh
+
   tests-on-mac:
     name: Tests on macOS
-    runs-on: macos-11
+    runs-on: macos-15
     steps:
-      - uses: actions/checkout@v2
-      - run: swift --version
-      - run: make test
-      - run: ./lint.sh
-      - run: |
+      - uses: actions/checkout@v4
+      - name: Swift version
+        run: swift --version
+      - name: Run tests
+        run: make test
+      - name: Lint
+        run: ./lint.sh
+      - name: Xcode build
+        run: |
           make xcodegen
           xcodebuild -project bocho.xcodeproj -scheme bocho-Package clean
-          xcodebuild -project bocho.xcodeproj -scheme bocho-Package -sdk macosx12.1 -destination arch=x86_64 -configuration Debug -enableCodeCoverage YES test
-      - uses: codecov/codecov-action@v1.2.1
+          xcodebuild -project bocho.xcodeproj -scheme bocho-Package -sdk macosx15.0 -destination arch=x86_64 -configuration Debug -enableCodeCoverage YES test
+      - uses: codecov/codecov-action@v4
