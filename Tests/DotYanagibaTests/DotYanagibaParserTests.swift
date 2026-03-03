@@ -164,7 +164,7 @@ class DotYanagibaParserTests : XCTestCase {
     XCTAssertNil(result.modules["foobar"])
   }
 
-  static var allTests = [
+  static let allTests = [
     ("testIntOption", testIntOption),
     ("testStringOption", testStringOption),
     ("testListIntOption", testListIntOption),

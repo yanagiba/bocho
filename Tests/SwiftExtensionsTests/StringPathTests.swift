@@ -52,7 +52,7 @@ class StringPathTests : XCTestCase {
     XCTAssertEqual(["/path/to/foo", "/path/to/bar", "/path/bar"].commonPathPrefix, "/path/")
   }
 
-  static var allTests = [
+  static let allTests = [
     ("testTruncatedPath", testTruncatedPath),
     ("testTruncatedPathWithPrefixNoMatch", testTruncatedPathWithPrefixNoMatch),
     ("testAbsolutePath", testAbsolutePath),
