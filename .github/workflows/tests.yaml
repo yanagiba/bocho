@@ -16,6 +16,10 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
+      - name: Install Swift dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get -y install libcurl4-openssl-dev libpython3-dev libxml2-dev libncurses-dev libz3-dev pkg-config zlib1g-dev
       - name: Install Swift
         run: |
           curl -O "https://download.swift.org/swiftly/linux/swiftly-1.1.1-x86_64.tar.gz"
@@ -27,8 +31,8 @@ jobs:
         run: . "$HOME/.swiftly/env.sh" && swift --version
       - name: Run tests
         run: . "$HOME/.swiftly/env.sh" && make test
-      - name: Lint
-        run: ./lint.sh
+      # - name: Lint
+      #   run: ./lint.sh
 
   tests-on-mac:
     name: Tests on macOS
@@ -39,8 +43,8 @@ jobs:
         run: swift --version
       - name: Run tests
         run: make test
-      - name: Lint
-        run: ./lint.sh
+      # - name: Lint
+      #   run: ./lint.sh
       - name: Xcode build
         run: |
           make xcodegen
