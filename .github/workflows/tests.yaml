@@ -9,11 +9,7 @@ on:
 jobs:
   tests-on-linux:
     name: Tests on Linux
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ubuntu-24.04, ubuntu-22.04]
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
       - name: Install Swift dependencies
@@ -36,7 +32,7 @@ jobs:
 
   tests-on-mac:
     name: Tests on macOS
-    runs-on: macos-15
+    runs-on: macos-26
     steps:
       - uses: actions/checkout@v4
       - name: Swift version
@@ -47,7 +43,5 @@ jobs:
       #   run: ./lint.sh
       - name: Xcode build
         run: |
-          make xcodegen
-          xcodebuild -project bocho.xcodeproj -scheme bocho-Package clean
-          xcodebuild -project bocho.xcodeproj -scheme bocho-Package -sdk macosx15.0 -destination arch=x86_64 -configuration Debug -enableCodeCoverage YES test
+          xcodebuild -scheme Bocho -destination "platform=macOS" -configuration Debug -enableCodeCoverage YES test
       - uses: codecov/codecov-action@v4
