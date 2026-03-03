@@ -2,7 +2,7 @@
 
 ![GitHub Actions Status](https://github.com/yanagiba/bocho/actions/workflows/tests.yaml/badge.svg)
 [![codecov](https://codecov.io/gh/yanagiba/bocho/branch/master/graph/badge.svg)](https://codecov.io/gh/yanagiba/bocho)
-![Swift 5.5](https://img.shields.io/badge/swift-5.5-brightgreen.svg)
+![Swift 6](https://img.shields.io/badge/swift-6-brightgreen.svg)
 ![Swift Package Manager](https://img.shields.io/badge/SPM-ready-orange.svg)
 ![Platforms](https://img.shields.io/badge/platform-%20Linux%20|%20macOS%20-red.svg)
 ![License](https://img.shields.io/github/license/yanagiba/bocho.svg)
@@ -18,7 +18,7 @@ libraries, and utilities, written in Swift and for Swift.
 
 ## Requirements
 
-- [Swift 5.5](https://swift.org/download/)
+- [Swift 6](https://swift.org/download/)
 
 ## Usage
 
@@ -27,19 +27,19 @@ libraries, and utilities, written in Swift and for Swift.
 Add the bocho dependency to `Package.swift`:
 
 ```swift
-// swift-tools-version:5.5
+// swift-tools-version:6.0
 
 import PackageDescription
 
 let package = Package(
   name: "MyPackage",
   dependencies: [
-    .package(url: "https://github.com/yanagiba/bocho.git", from: "0.18.10")
+    .package(url: "https://github.com/yanagiba/bocho.git", from: "0.26.3")
   ],
   targets: [
     .target(name: "MyTarget", dependencies: ["Bocho"]),
   ],
-  swiftLanguageVersions: [.v5]
+  swiftLanguageModes: [.v6]
 )
 ```
 
