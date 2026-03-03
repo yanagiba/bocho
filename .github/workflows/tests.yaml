@@ -1,7 +1,8 @@
 name: Tests
 on:
   push:
-  pull_request:
+  pull_request_target:
+    types: [opened, synchronize, reopened]
   schedule:
     - cron:  '0 15 * * 0'
   workflow_dispatch:
@@ -10,8 +11,12 @@ jobs:
   tests-on-linux:
     name: Tests on Linux
     runs-on: ubuntu-24.04
+    # For fork PRs, only run for trusted actors
+    if: github.event_name != 'pull_request_target' || github.actor == 'l2qi' || github.actor == 'ryuichis'
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
       - name: Install Swift dependencies
         run: |
           sudo apt-get update
@@ -33,8 +38,12 @@ jobs:
   tests-on-mac:
     name: Tests on macOS
     runs-on: macos-26
+    # For fork PRs, only run for trusted actors
+    if: github.event_name != 'pull_request_target' || github.actor == 'l2qi' || github.actor == 'ryuichis'
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
       - name: Swift version
         run: swift --version
       - name: Run tests
@@ -43,5 +52,5 @@ jobs:
       #   run: ./lint.sh
       - name: Xcode build
         run: |
-          xcodebuild -scheme Bocho -destination "platform=macOS" -configuration Debug -enableCodeCoverage YES test
+          xcodebuild -scheme bocho -destination "platform=macOS" -configuration Debug -enableCodeCoverage YES test
       - uses: codecov/codecov-action@v4
