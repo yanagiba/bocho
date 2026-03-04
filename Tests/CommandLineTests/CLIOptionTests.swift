@@ -64,10 +64,4 @@ class CLIOptionTests : XCTestCase {
     XCTAssertEqual(option.arguments, ["a", "-f"])
   }
 
-  static let allTests = [
-    ("testNoOption", testNoOption),
-    ("testFlags", testFlags),
-    ("testStringOptions", testStringOptions),
-    ("testDictionaryOptions", testDictionaryOptions),
-  ]
 }

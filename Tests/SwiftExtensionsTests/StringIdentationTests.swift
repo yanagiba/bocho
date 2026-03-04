@@ -50,9 +50,4 @@ class StringIdentationTests : XCTestCase {
     XCTAssertEqual("\n\n\n".indented, "  \n  \n  \n  ")
   }
 
-  static let allTests = [
-    ("testIdentationInitializer", testIdentationInitializer),
-    ("testStaticIndent", testStaticIndent),
-    ("testIndented", testIndented),
-  ]
 }
