@@ -41,4 +41,16 @@ jobs:
         run: swift test --enable-code-coverage
       # - name: Lint
       #   run: ./lint.sh
+      - name: Convert coverage to lcov
+        run: |
+          BIN_PATH=$(swift build --show-bin-path)
+          XCTEST_BUNDLE=$(find "$BIN_PATH" -name "*.xctest" -type d | head -1)
+          xcrun llvm-cov export \
+            "$XCTEST_BUNDLE/Contents/MacOS/$(basename "$XCTEST_BUNDLE" .xctest)" \
+            -instr-profile "$BIN_PATH/codecov/default.profdata" \
+            -format lcov \
+            > coverage.lcov
       - uses: codecov/codecov-action@v4
+        with:
+          files: coverage.lcov
+          token: ${{ secrets.CODECOV_TOKEN }}
