@@ -38,10 +38,7 @@ jobs:
       - name: Swift version
         run: swift --version
       - name: Run tests
-        run: make test
+        run: swift test --enable-code-coverage
       # - name: Lint
       #   run: ./lint.sh
-      - name: Xcode build
-        run: |
-          xcodebuild -scheme bocho -destination "platform=macOS" -configuration Debug -enableCodeCoverage YES test
       - uses: codecov/codecov-action@v4
