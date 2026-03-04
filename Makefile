@@ -1,6 +1,6 @@
 BUILD_DIR=.build/debug
 
-.PHONY: all clean build test xcodegen
+.PHONY: all clean build test
 
 all: build
 
@@ -12,6 +12,3 @@ build:
 
 test: build
 	swift test
-
-xcodegen:
-	swift package generate-xcodeproj --enable-code-coverage
